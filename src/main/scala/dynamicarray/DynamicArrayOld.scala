@@ -2,9 +2,9 @@ package dynamicarray
 
 import scala.reflect.ClassTag
 
-class DynamicArray[T] extends Iterable[T]{
+class DynamicArrayOld[T] extends Iterable[T]{
 
-  private var arr: Array[T] = null
+  private var arr: Array[T] = _
   private var len = 0 // length user thinks array is
   private var capacity = 0 // Actual array size
 

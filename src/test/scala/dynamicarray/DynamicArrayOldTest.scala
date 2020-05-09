@@ -4,22 +4,22 @@ import org.junit.Assert.{assertEquals, assertFalse, assertTrue}
 import org.junit.Test
 
 
-class DynamicArrayTest {
+class DynamicArrayOldTest {
 
   @Test def testEmptyList(): Unit = {
-    val list = new DynamicArray[Integer]
+    val list = new DynamicArrayOld[Integer]
     assertTrue(list.isEmpty)
   }
 
   @Test(expected = classOf[Exception]) def testRemovingEmpty(): Unit = {
-    val list = new DynamicArray[Integer]
+    val list = new DynamicArrayOld[Integer]
     list.removeAt(0)
   }
 
   import org.junit.Test
 
   @Test(expected = classOf[Exception]) def testIndexOutOfBounds(): Unit = {
-    val list = new DynamicArray[Integer]
+    val list = new DynamicArrayOld[Integer]
     list.add(-56)
     list.add(-53)
     list.add(-55)
@@ -28,7 +28,7 @@ class DynamicArrayTest {
 
 
   @Test(expected = classOf[Exception]) def testIndexOutOfBounds2(): Unit = {
-    val list = new DynamicArray[Integer]
+    val list = new DynamicArrayOld[Integer]
     for (i <- 0 until 1000) {
       list.add(789)
     }
@@ -38,7 +38,7 @@ class DynamicArrayTest {
   import org.junit.Test
 
   @Test def testRemovingAt(): Unit = {
-    val list = new DynamicArray[String]
+    val list = new DynamicArrayOld[String]
     val strs = Array("a", "b", "c")
     for (s <- strs) {
       list.add(s)
@@ -51,7 +51,7 @@ class DynamicArrayTest {
   }
 
   @Test def testRemoving(): Unit = {
-    val list = new DynamicArray[String]
+    val list = new DynamicArrayOld[String]
     val strs = Array("a", "b", "c", "d", "e", null, "g", "h")
     for (s <- strs) {
       list.add(s)
@@ -80,7 +80,7 @@ class DynamicArrayTest {
   import org.junit.Test
 
   @Test def testRemoving2(): Unit = {
-    val list = new DynamicArray[String]
+    val list = new DynamicArrayOld[String]
     val strs = Array("a", "b", "c", "d")
     for (s <- strs) {
       list.add(s)
@@ -96,7 +96,7 @@ class DynamicArrayTest {
   }
 
   @Test def testIndexOfNullElement(): Unit = {
-    val list = new DynamicArray[String]
+    val list = new DynamicArrayOld[String]
     val strs = Array("a", "b", null, "d")
     for (s <- strs) {
       list.add(s)
@@ -107,18 +107,18 @@ class DynamicArrayTest {
   import org.junit.Test
 
   @Test def testAddingElements(): Unit = {
-    val list = new DynamicArray[Integer]
+    val list = new DynamicArrayOld[Integer]
     val elems = Array(1, 2, 3, 4, 5, 6, 7)
-    for (i <- 0 until elems.length) {
+    for (i <- elems.indices) {
       list.add(elems(i))
     }
-    for (i <- 0 until elems.length) {
+    for (i <- elems.indices) {
       assertEquals(list.get(i).intValue, elems(i))
     }
   }
 
   @Test def testAddAndRemove(): Unit = {
-    val list = new DynamicArray[Long]()
+    val list = new DynamicArrayOld[Long]()
     for (i <- 0 until 55) {
       list.add(44)
     }
@@ -150,7 +150,7 @@ class DynamicArrayTest {
   }
 
   @Test def testAddSetRemove(): Unit = {
-    val list = new DynamicArray[Long]()
+    val list = new DynamicArrayOld[Long]()
     for (i <- 0 until 55) {
       list.add(44)
     }
@@ -191,7 +191,7 @@ class DynamicArrayTest {
   }
 
   @Test def testSize(): Unit = {
-    val list = new DynamicArray[Integer]
+    val list = new DynamicArrayOld[Integer]
     val elems = Array[Integer](-76, 45, 66, 3, null, 54, 33)
     var i = 0
     var sz = 1
